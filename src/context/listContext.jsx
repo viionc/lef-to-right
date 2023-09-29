@@ -35,7 +35,6 @@ export default function ListContextProvider({children}) {
             value={{
                 items,
                 moveItems,
-                setItems,
                 handleItemSelected,
             }}
         >
