@@ -1,4 +1,5 @@
 import {useContext, useState, createContext} from "react";
+import {data} from "../data";
 
 const ListContext = createContext({});
 export const useListContext = () => {
@@ -6,28 +7,11 @@ export const useListContext = () => {
 };
 
 export default function ListContextProvider({children}) {
-    const [items, setItems] = useState([
-        {
-            label: 1,
-            side: "left",
-            selected: false,
-        },
-        {
-            label: 2,
-            side: "left",
-            selected: false,
-        },
-        {
-            label: 3,
-            side: "left",
-            selected: false,
-        },
-        {
-            label: 4,
-            side: "left",
-            selected: false,
-        },
-    ]);
+    const [items, setItems] = useState(
+        data.map(item => {
+            return {label: item, side: "left", selected: false};
+        })
+    );
     const moveItems = side => {
         let newItems = items.map(item => {
             if (item.selected && item.side != side) {
